@@ -1,0 +1,8 @@
+[submodule "apps/platform"]
+	path = apps/platform
+	url = https://github.com/klubfisika/platform.git
+	branch = main
+[submodule "apps/index"]
+	path = apps/index
+	url = https://github.com/klubfisika/index.git
+	branch = main

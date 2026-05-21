@@ -1,0 +1,15 @@
+{
+  "name": "kf13-community",
+  "private": true,
+  "description": "KF13 Community Platform monorepo — apps/platform (social media) + apps/index (research archive) + shared packages",
+  "scripts": {
+    "dev:platform": "cd apps/platform && bun run dev",
+    "dev:index": "cd apps/index && bun run dev",
+    "build:platform": "cd apps/platform && bun run build",
+    "build:index": "cd apps/index && bun run build"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}
