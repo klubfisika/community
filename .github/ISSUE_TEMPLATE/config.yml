@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 Diskusi & Ide
+    url: https://github.com/klubfisika/community/discussions
+    about: Untuk diskusi umum, pertanyaan, dan sharing ide — gunakan GitHub Discussions
+  - name: 📖 Dokumentasi
+    url: https://github.com/klubfisika/community/tree/main/docs
+    about: Baca dokumentasi lengkap sebelum membuka issue
+  - name: 🤝 Cara Berkontribusi
+    url: https://github.com/klubfisika/community/blob/main/CONTRIBUTING.md
+    about: Panduan lengkap untuk kontributor baru
