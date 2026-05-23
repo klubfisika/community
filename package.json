@@ -6,8 +6,9 @@
     "dev:index": "bun run --cwd apps/index dev",
     "dev:platform": "bun run --cwd apps/platform dev",
     "build:index": "bun run --cwd apps/index build",
-    "build:platform": "bun run --cwd apps/platform build",
-    "check": "bun run --cwd apps/index check"
+    "build:platform": "bun run --cwd apps/platform build.client && bun run --cwd apps/platform build.server",
+    "check": "bun run --cwd apps/index check",
+    "seed": "bun run --cwd . ts-node scripts/seed.ts"
   },
   "workspaces": [
     "apps/*",
