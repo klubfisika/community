@@ -1,0 +1,14 @@
+{
+  "name": "@kf13/auth",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./client": "./src/client.ts",
+    "./server": "./src/server.ts"
+  },
+  "dependencies": {
+    "better-auth": "^1.4.21"
+  }
+}
