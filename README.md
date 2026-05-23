@@ -10,19 +10,8 @@ Monorepo untuk dua produk terintegrasi: **platform sosial media** dan **arsip ri
 
 | Dokumen | Deskripsi |
 |---------|-----------|
-| 📖 [VISION.md](docs/VISION.md) | Visi lengkap, mengapa platform ini dibangun, roadmap |
-| 🏛️ [GOVERNANCE.md](docs/GOVERNANCE.md) | Tata kelola, peran, proses pengambilan keputusan |
-| 💰 [FUNDING.md](docs/FUNDING.md) | Strategi pendanaan, grant, cara berkontribusi finansial |
-| 📣 [OUTREACH.md](docs/OUTREACH.md) | Strategi promosi ke pemerintah, institusi, komunitas global |
-| 🤝 [CONTRIBUTING.md](CONTRIBUTING.md) | Cara berkontribusi — kode, dokumentasi, desain, ide |
-| 💬 [Discussions](https://github.com/klubfisika/community/discussions) | Forum diskusi terbuka untuk komunitas |
-| 🐛 [Issues](https://github.com/klubfisika/community/issues) | Bug report, feature request, RFC |
-
-
-| Dokumen | Deskripsi |
-|---------|-----------|
-| 🏗️ [ARCHITECTURE.md](docs/ARCHITECTURE.md) | Arsitektur teknis lengkap — database, auth, submodule |
-| 🔐 [AUTH.md](docs/AUTH.md) | Detail shared auth: Community sebagai auth provider, Index via API |
+| 🏗️ [ARCHITECTURE.md](docs/ARCHITECTURE.md) | Arsitektur teknis — database, auth, submodule |
+| 🔐 [AUTH.md](docs/AUTH.md) | Shared auth: Community sebagai auth provider, Index via API |
 | 💻 [DEVELOPMENT.md](docs/DEVELOPMENT.md) | Setup, env, workflow development, deployment |
 | 📋 [DECISIONS.md](docs/DECISIONS.md) | Log keputusan teknis & rationale |
 | 📖 [VISION.md](docs/VISION.md) | Visi lengkap, mengapa platform ini dibangun, roadmap |
@@ -30,7 +19,12 @@ Monorepo untuk dua produk terintegrasi: **platform sosial media** dan **arsip ri
 | 💰 [FUNDING.md](docs/FUNDING.md) | Strategi pendanaan, grant, cara berkontribusi finansial |
 | 📣 [OUTREACH.md](docs/OUTREACH.md) | Strategi promosi ke pemerintah, institusi, komunitas global |
 | 🤝 [CONTRIBUTING.md](CONTRIBUTING.md) | Cara berkontribusi — kode, dokumentasi, desain, ide |
-Membangun ekosistem digital tempat **kredibilitas ilmiah** tumbuh dari dua sisi yang saling menguatkan:
+| 💬 [Discussions](https://github.com/openriset/community/discussions) | Forum diskusi terbuka untuk komunitas |
+| 🐛 [Issues](https://github.com/openriset/community/issues) | Bug report, feature request, RFC |
+
+---
+
+## Visi
 
 | Dimensi | Produk | Analogi |
 |---------|--------|---------|
@@ -46,33 +40,38 @@ Baca [VISION.md](docs/VISION.md) untuk penjelasan mendalam tentang mengapa platf
 ## Arsitektur
 
 ```
-┌──────────────────────────────────────────────┐
-│           github.com/klubfisika/community     │
-│              (monorepo entrypoint)            │
-├──────────────────────────────────────────────┤
-│                                              │
-│  apps/platform           apps/index          │
-│  ┌──────────────┐       ┌──────────────┐     │
-│  │  Qwik City   │       │  SvelteKit   │     │
-│  │  Tailwind 4  │◄─────►│  Drizzle ORM │     │
-│  │  Neon DB     │ auth  │  Better Auth │     │
-│  │  bcryptjs    │shared │  Paraglide   │     │
-│  │  KaTeX       │       │  mdsvex      │     │
-│  │  Mermaid     │       │  Storybook   │     │
-│  └──────────────┘       └──────────────┘     │
-│        │                      │              │
-│   sosial media          arsip riset          │
-│   • feed & diskusi      • indeks karya       │
-│   • proyek kolaborasi   • verifikasi peer    │
-│   • gamifikasi kaskus   • sitasi & metrik    │
-│   • mentorship          • portofolio riset   │
-│                                              │
-│  packages/                                   │
-│  ┌──────────────────────────────────────┐    │
-│  │  shared auth · shared types · utils  │    │
-│  └──────────────────────────────────────┘    │
-│                                              │
-└──────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────┐
+│        github.com/openriset/community (monorepo root)         │
+├──────────────────────────────────────────────────────────────┤
+│                                                              │
+│  apps/platform                     apps/index                │
+│  ┌──────────────────┐             ┌──────────────────┐       │
+│  │  Qwik City       │             │  SvelteKit 2     │       │
+│  │  Better Auth     │◄─── API ────│  Drizzle ORM     │       │
+│  │  Tailwind CSS 4  │ auth        │  Paraglide i18n  │       │
+│  │  KaTeX · Mermaid │ validation  │  Tailwind CSS 4  │       │
+│  │                  │             │  mdsvex          │       │
+│  │  PLATFORM SOSIAL │             │  ARSIP RISET     │       │
+│  │  • feed & diskusi│             │  • indeks karya  │       │
+│  │  • proyek        │             │  • verifikasi    │       │
+│  │  • gamifikasi    │             │  • sitasi        │       │
+│  │  • onboarding    │             │  • portofolio    │       │
+│  └────────┬─────────┘             └────────┬─────────┘       │
+│           │                                │                 │
+│           ▼                                ▼                 │
+│  ┌──────────────────┐             ┌──────────────────┐       │
+│  │  Community DB    │             │  Index DB        │       │
+│  │  user, session   │             │  research_works  │       │
+│  │  profiles, posts │             │  authors, tags   │       │
+│  │  projects, ...   │             │  citations, ...  │       │
+│  └──────────────────┘             └──────────────────┘       │
+│                                                              │
+│  packages/                                                   │
+│  ┌──────────────────────────────────────────────────────┐   │
+│  │  @kf13/auth · @kf13/db                               │   │
+│  └──────────────────────────────────────────────────────┘   │
+│                                                              │
+└──────────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -84,18 +83,21 @@ community/
 ├── apps/
 │   ├── platform/          → github.com/klubfisika/platform (Qwik City)
 │   └── index/             → github.com/klubfisika/index (SvelteKit)
-├── packages/              → shared packages (auth, types, utils)
+├── packages/              → @kf13/auth, @kf13/db
 ├── docs/
+│   ├── ARCHITECTURE.md    → arsitektur teknis
+│   ├── AUTH.md            → detail shared auth
+│   ├── DEVELOPMENT.md     → workflow development
+│   ├── DECISIONS.md       → log keputusan teknis
 │   ├── VISION.md          → visi lengkap & roadmap
 │   ├── GOVERNANCE.md      → tata kelola komunitas
 │   ├── FUNDING.md         → strategi pendanaan
 │   └── OUTREACH.md        → strategi promosi & advokasi
 ├── .github/
-│   ├── ISSUE_TEMPLATE/    → template bug report, feature request, RFC
-│   └── DISCUSSION_TEMPLATE/
-├── CONTRIBUTING.md        → panduan kontribusi
+│   └── ISSUE_TEMPLATE/
+├── CONTRIBUTING.md
 ├── .gitmodules
-└── README.md              → (ini)
+└── README.md
 ```
 
 | Path | Repository | Stack |
@@ -116,25 +118,34 @@ community/
 ### Clone
 
 ```bash
-git clone --recurse-submodules git@github.com:klubfisika/community.git
+git clone --recurse-submodules git@github.com:openriset/community.git
 cd community
 ```
 
 ### Development
 
 ```bash
-# Index arsip riset (SvelteKit)
+# Dari root monorepo:
+bun run dev:platform   # Platform (Community) → http://localhost:5173
+bun run dev:index      # Index (Arsip Riset) → http://localhost:5173
+
+# Setup masing-masing:
+# Index
 cd apps/index
 bun install
-cp .env.example .env           # isi DATABASE_URL, BETTER_AUTH_SECRET, ORIGIN
-bun run dev                    # → http://localhost:5173
+cp .env.example .env
+# isi: DATABASE_URL (Index DB), AUTH_ORIGIN (Community origin), ORIGIN
+bun run dev
 
-# Platform sosial media (Qwik City)
+# Platform
 cd apps/platform
 bun install
-cp .env.example .env.local     # isi NEON_DATABASE_URL
-bun run dev                    # → http://localhost:5173
+cp .env.example .env.local
+# isi: DATABASE_URL (Community DB), BETTER_AUTH_SECRET, ORIGIN
+bun run dev
 ```
+
+> **Catatan**: Index dan Platform menggunakan database Neon PostgreSQL yang **berbeda**. Auth dikelola oleh Community (Platform). Index memvalidasi session via API call ke Community — tidak ada koneksi DB langsung. Lihat [AUTH.md](docs/AUTH.md) untuk detail.
 
 Lihat [CONTRIBUTING.md](CONTRIBUTING.md) untuk panduan setup lengkap.
 
@@ -207,7 +218,7 @@ Kontributor: terbatas                  Kontributor: dari mana saja
 → Baca [CONTRIBUTING.md](CONTRIBUTING.md), cari issue berlabel `good first issue`
 
 ### Sebagai Peneliti / Akademisi
-→ Buka [Discussion](https://github.com/klubfisika/community/discussions) dan share perspektif domain Anda
+→ Buka [Discussion](https://github.com/openriset/community/discussions) dan share perspektif domain Anda
 
 ### Sebagai Guru / Pendidik
 → Hubungi via Discussion — kami butuh feedback dari ground level
@@ -245,6 +256,8 @@ MIT — kode bebas digunakan, dimodifikasi, dan didistribusikan ulang tanpa syar
   <sub>
     Diinisiasi oleh <a href="https://klubfisika.github.io">Klub Fisika Indonesia</a> — dimaintain bersama komunitas
     <br>
+    <a href="docs/ARCHITECTURE.md">Arsitektur</a> ·
+    <a href="docs/AUTH.md">Auth</a> ·
     <a href="docs/VISION.md">Visi</a> ·
     <a href="docs/GOVERNANCE.md">Governance</a> ·
     <a href="docs/FUNDING.md">Funding</a> ·
