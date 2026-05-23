@@ -18,10 +18,18 @@ Monorepo untuk dua produk terintegrasi: **platform sosial media** dan **arsip ri
 | 💬 [Discussions](https://github.com/klubfisika/community/discussions) | Forum diskusi terbuka untuk komunitas |
 | 🐛 [Issues](https://github.com/klubfisika/community/issues) | Bug report, feature request, RFC |
 
----
 
-## Visi
-
+| Dokumen | Deskripsi |
+|---------|-----------|
+| 🏗️ [ARCHITECTURE.md](docs/ARCHITECTURE.md) | Arsitektur teknis lengkap — database, auth, submodule |
+| 🔐 [AUTH.md](docs/AUTH.md) | Detail shared auth: Community sebagai auth provider, Index via API |
+| 💻 [DEVELOPMENT.md](docs/DEVELOPMENT.md) | Setup, env, workflow development, deployment |
+| 📋 [DECISIONS.md](docs/DECISIONS.md) | Log keputusan teknis & rationale |
+| 📖 [VISION.md](docs/VISION.md) | Visi lengkap, mengapa platform ini dibangun, roadmap |
+| 🏛️ [GOVERNANCE.md](docs/GOVERNANCE.md) | Tata kelola, peran, proses pengambilan keputusan |
+| 💰 [FUNDING.md](docs/FUNDING.md) | Strategi pendanaan, grant, cara berkontribusi finansial |
+| 📣 [OUTREACH.md](docs/OUTREACH.md) | Strategi promosi ke pemerintah, institusi, komunitas global |
+| 🤝 [CONTRIBUTING.md](CONTRIBUTING.md) | Cara berkontribusi — kode, dokumentasi, desain, ide |
 Membangun ekosistem digital tempat **kredibilitas ilmiah** tumbuh dari dua sisi yang saling menguatkan:
 
 | Dimensi | Produk | Analogi |
