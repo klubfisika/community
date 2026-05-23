@@ -3,14 +3,11 @@
   "private": true,
   "description": "KF13 Community Platform monorepo — platform sosial + arsip riset + shared packages",
   "scripts": {
-    "dev": "concurrently \"bun run dev:index\" \"bun run dev:platform\"",
-    "dev:index": "cd apps/index && bun run dev",
-    "dev:platform": "cd apps/platform && bun run dev",
-    "build:index": "cd apps/index && bun run build",
-    "build:platform": "cd apps/platform && bun run build",
-    "build": "bun run build:index && bun run build:platform",
-    "check": "bun run check:index",
-    "check:index": "cd apps/index && bun run check"
+    "dev:index": "bun --cwd apps/index run dev",
+    "dev:platform": "bun --cwd apps/platform run dev",
+    "build:index": "bun --cwd apps/index run build",
+    "build:platform": "bun --cwd apps/platform run build",
+    "check": "bun --cwd apps/index run check"
   },
   "workspaces": [
     "apps/*",
